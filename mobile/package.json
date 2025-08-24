@@ -1,0 +1,25 @@
+{
+  "name": "task-manager-mobile",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de tareas - App móvil",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "npx expo start",
+    "android": "npx expo start --android",
+    "ios": "npx expo start --ios"
+  },
+  "dependencies": {
+    "expo": "~47.0.0",
+    "expo-status-bar": "~1.4.0",
+    "react": "18.2.0",
+    "react-native": "0.71.14",
+    "@react-native-async-storage/async-storage": "1.17.11",
+    "@react-navigation/native": "^6.0.0",
+    "@react-navigation/stack": "^6.0.0",
+    "axios": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.0",
+    "@react-native/babel-preset": "^0.81.0"
+  }
+}
