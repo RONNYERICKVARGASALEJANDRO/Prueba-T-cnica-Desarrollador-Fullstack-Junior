@@ -613,3 +613,31 @@ body {
     width: 100%;
   }
 }
+/* Contenedor especial para inputs de contraseña */
+.password-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input input {
+  flex: 1;
+  padding-right: 45px; /* espacio para el botón */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;   /* 🔽 más pequeño */
+  color: #555;
+  padding: 2px;        /* 🔽 menos espacio */
+  line-height: 1;
+}
+
+.toggle-password:hover {
+  color: #222;
+}
+

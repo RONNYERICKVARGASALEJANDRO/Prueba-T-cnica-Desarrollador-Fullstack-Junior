@@ -11,7 +11,10 @@ const Register = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const { register } = useAuth();
   const navigate = useNavigate();
 
@@ -24,14 +27,19 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (formData.password !== formData.confirmPassword) {
       return setError('Las contraseñas no coinciden');
     }
 
+    // Validación extra: mínimo 8 caracteres
+    if (formData.password.length < 8) {
+      return setError('La contraseña debe tener al menos 8 caracteres');
+    }
+
     setLoading(true);
     setError('');
-    
+
     try {
       await register({
         name: formData.name,
@@ -73,23 +81,41 @@ const Register = () => {
         </div>
         <div>
           <label>Contraseña:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-input">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? '🙈' : '👁️'}
+            </button>
+          </div>
         </div>
         <div>
           <label>Confirmar Contraseña:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-input">
+            <input
+              type={showConfirmPassword ? 'text' : 'password'}
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? '🙈' : '👁️'}
+            </button>
+          </div>
         </div>
         <button type="submit" disabled={loading}>
           {loading ? 'Cargando...' : 'Registrarse'}
@@ -103,3 +129,5 @@ const Register = () => {
 };
 
 export default Register;
+
+
